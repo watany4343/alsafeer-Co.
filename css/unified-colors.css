@@ -1,0 +1,324 @@
+/* نظام ألوان موحد وشامل للموقع */
+
+:root {
+    /* الألوان الأساسية */
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color-1: #f093fb;
+    --accent-color-2: #f5576c;
+    
+    /* تدرجات احترافية */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-light: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 255, 0.9) 100%);
+    
+    /* ألوان النصوص */
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --text-light: #ffffff;
+    
+    /* ألوان الخلفيات */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-accent: rgba(102, 126, 234, 0.05);
+    
+    /* الظلال */
+    --shadow-light: 0 4px 15px rgba(102, 126, 234, 0.1);
+    --shadow-medium: 0 8px 25px rgba(102, 126, 234, 0.2);
+    --shadow-strong: 0 15px 35px rgba(102, 126, 234, 0.3);
+    
+    /* الخطوط */
+    --font-primary: 'Cairo', sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 600;
+    --font-weight-heavy: 700;
+}
+
+/* توحيد نظام الألوان للموقع بالكامل */
+
+/* الخلفيات الأساسية */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+}
+
+/* العناوين الموحدة */
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: var(--text-primary) !important;
+    font-family: var(--font-primary) !important;
+    font-weight: var(--font-weight-bold);
+}
+
+/* الأزرار الموحدة */
+.btn, .btn-primary, .btn-theme {
+    background: var(--gradient-primary) !important;
+    border: none !important;
+    color: var(--text-light) !important;
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .btn-primary:hover, .btn-theme:hover {
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+    color: var(--text-light) !important;
+}
+
+.btn-secondary {
+    background: var(--gradient-secondary) !important;
+    border: none !important;
+    color: var(--text-light) !important;
+}
+
+.btn-secondary:hover {
+    background: var(--gradient-secondary) !important;
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+    color: var(--text-light) !important;
+}
+
+/* الروابط الموحدة */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* البطاقات والعناصر */
+.card, .panel, .well {
+    background: var(--bg-primary) !important;
+    border: 1px solid rgba(102, 126, 234, 0.1) !important;
+    box-shadow: var(--shadow-light);
+    border-radius: 15px !important;
+}
+
+/* الأقسام */
+section {
+    font-family: var(--font-primary);
+}
+
+.home-section {
+    background: var(--bg-primary);
+}
+
+.bg-gray {
+    background: var(--bg-secondary) !important;
+}
+
+/* العناصر التفاعلية */
+.list-group-item {
+    background: var(--bg-primary) !important;
+    border-color: rgba(102, 126, 234, 0.1) !important;
+    color: var(--text-primary) !important;
+}
+
+.list-group-item:hover {
+    background: var(--bg-accent) !important;
+}
+
+/* النماذج */
+.form-control {
+    border-color: rgba(102, 126, 234, 0.2) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-primary);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25) !important;
+}
+
+/* الجداول */
+.table {
+    color: var(--text-primary) !important;
+    font-family: var(--font-primary);
+}
+
+.table th {
+    background: var(--gradient-primary) !important;
+    color: var(--text-light) !important;
+    border: none !important;
+}
+
+.table td {
+    border-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+/* الخطوط الفاصلة */
+.heading-line, hr {
+    background: var(--gradient-primary) !important;
+    border: none !important;
+    height: 3px !important;
+    border-radius: 2px;
+}
+
+/* الشارات والتسميات */
+.badge, .label {
+    background: var(--gradient-primary) !important;
+    color: var(--text-light) !important;
+    font-family: var(--font-primary);
+}
+
+/* العناصر المتحركة */
+.animate, .fade-in {
+    transition: all 0.6s ease;
+}
+
+/* النوافذ المنبثقة */
+.modal-content {
+    background: var(--gradient-light) !important;
+    border: none !important;
+    box-shadow: var(--shadow-strong);
+}
+
+.modal-header {
+    background: var(--gradient-primary) !important;
+    color: var(--text-light) !important;
+    border: none !important;
+}
+
+/* شريط التمرير المخصص */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* تخصيص العناصر الخاصة */
+.intro-text {
+    color: var(--text-primary) !important;
+}
+
+.section-heading {
+    color: var(--text-primary) !important;
+}
+
+.lead {
+    color: var(--text-secondary) !important;
+    font-family: var(--font-primary);
+}
+
+/* تأثيرات خاصة للنصوص */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* أيقونات Font Awesome */
+.fa, .fas, .far, .fab {
+    color: var(--primary-color);
+}
+
+/* تحسينات للعناصر التفاعلية */
+button, input[type="submit"], input[type="button"] {
+    font-family: var(--font-primary) !important;
+    transition: all 0.3s ease;
+}
+
+/* تخصيص الألوان للعناصر المحددة */
+.navbar-nav li.current a,
+.navbar-nav li a:hover {
+    background: var(--gradient-primary) !important;
+    color: var(--text-light) !important;
+}
+
+/* إصلاح المشاكل الخاصة */
+.list-group-item-danger {
+    background: var(--gradient-secondary) !important;
+    border-color: var(--accent-color-2) !important;
+    color: var(--text-light) !important;
+}
+
+/* تحسينات الاستجابة */
+@media (max-width: 768px) {
+    .btn {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+    }
+    
+    h1, .h1 {
+        font-size: 2rem !important;
+    }
+    
+    h2, .h2 {
+        font-size: 1.75rem !important;
+    }
+    
+    h3, .h3 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+    
+    h1, .h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    h2, .h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* تحسينات الأداء */
+* {
+    box-sizing: border-box;
+}
+
+/* إصلاح مشاكل التداخل */
+.container, .container-fluid {
+    font-family: var(--font-primary);
+}
+
+/* تأثيرات الخلفية الموحدة */
+.parallax-card, .hologram-card {
+    background: var(--gradient-light) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ألوان الحالة */
+.text-success { color: #28a745 !important; }
+.text-warning { color: #ffc107 !important; }
+.text-danger { color: #dc3545 !important; }
+.text-info { color: var(--primary-color) !important; }
+
+/* خلفيات الحالة */
+.bg-success { background-color: #28a745 !important; }
+.bg-warning { background-color: #ffc107 !important; }
+.bg-danger { background-color: #dc3545 !important; }
+.bg-info { background: var(--gradient-primary) !important; }
+
+/* تحسينات أخيرة */
+.portfolio-section,
+.home-section {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}

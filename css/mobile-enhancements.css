@@ -1,0 +1,578 @@
+/* تحسينات خاصة للهواتف المحمولة */
+
+/* تحسين الخط والنصوص */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif !important;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+/* إصلاح navbar ليكون دائماً مرئي وثابت */
+.navbar {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
+    z-index: 9999 !important;
+    border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+}
+
+.navbar-fixed-top {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    left: 0;
+    right: 0;
+}
+
+.navbar-scrolled {
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.98) 0%, 
+        rgba(118, 75, 162, 0.98) 100%) !important;
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+    transform: translateY(0);
+}
+
+.navbar-default {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.98) 0%, 
+        rgba(248, 250, 255, 0.98) 100%) !important;
+    border: none;
+    padding: 15px 0;
+    min-height: 80px;
+    position: relative;
+}
+
+.navbar-brand {
+    padding: 12px 20px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-brand::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 2px;
+    margin-right: 15px;
+}
+
+.navbar-brand img {
+    max-height: 55px;
+    width: auto;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    border-radius: 8px;
+    padding: 5px;
+    background: rgba(255,255,255,0.1);
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.3));
+}
+
+/* تحسين القائمة المنسدلة للهواتف - احترافي وبارز */
+.navbar-toggle {
+    border: 2px solid rgba(102, 126, 234, 0.3) !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border-radius: 12px;
+    padding: 12px 15px;
+    margin-top: 12px;
+    margin-right: 20px;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.navbar-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.navbar-toggle:hover::before {
+    left: 100%;
+}
+
+.navbar-toggle:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.5);
+    border-color: rgba(255,255,255,0.5) !important;
+}
+
+.navbar-toggle:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.7) !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff !important;
+    height: 3px;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin: 4px 0;
+    width: 25px;
+    position: relative;
+}
+
+.navbar-toggle:hover .icon-bar {
+    background-color: #f8f9ff !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* تحسين قائمة التنقل - احترافي وأنيق */
+.navbar-nav {
+    margin: 0;
+    position: relative;
+}
+
+.navbar-nav li {
+    margin: 0 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar-nav li::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform: translateX(-50%);
+}
+
+.navbar-nav li:hover::before,
+.navbar-nav li.current::before {
+    width: 100%;
+}
+
+.navbar-nav li a {
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 20px !important;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    color: #2c3e50 !important;
+    text-decoration: none;
+    position: relative;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.navbar-nav li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.1) 0%, 
+        rgba(118, 75, 162, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.navbar-nav li a:hover::before {
+    opacity: 1;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li.current a {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    border-color: rgba(255,255,255,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.navbar-nav li.current a {
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+/* تحسين الأقسام للهواتف - محسن مع navbar */
+section {
+    padding: 100px 0 60px;
+    position: relative;
+    scroll-margin-top: 80px;
+}
+
+#intro {
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(248, 250, 255, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="%23667eea" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="%23764ba2" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="%23667eea" opacity="0.1"/><circle cx="60" cy="40" r="1" fill="%23764ba2" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    z-index: -1;
+}
+
+.container {
+    padding: 0 20px;
+}
+
+/* تحسين العناوين */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: 600;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+/* تحسين الأزرار */
+.btn {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.btn-theme {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-theme:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+    color: #fff !important;
+}
+
+/* تحسين البطاقات والعناصر */
+.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    background: #fff;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+/* تحسين معرض الصور */
+.og-grid li {
+    margin: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.og-grid li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+
+.og-grid li img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.og-grid li:hover img {
+    transform: scale(1.05);
+}
+
+/* تحسينات خاصة للهواتف الصغيرة */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .navbar-brand img {
+        max-height: 40px;
+    }
+    
+    .navbar-nav li a {
+        font-size: 14px;
+        padding: 10px 12px !important;
+    }
+    
+    h1 { font-size: 28px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 20px; }
+    h4 { font-size: 18px; }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    .og-grid li {
+        margin: 10px 5px;
+    }
+}
+
+/* تحسينات للأجهزة المتوسطة - قائمة منسدلة احترافية */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        background: linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.98) 0%, 
+            rgba(248, 250, 255, 0.98) 100%);
+        margin-top: 20px;
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        padding: 25px;
+        border: 1px solid rgba(255,255,255,0.3);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .navbar-collapse::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 20px;
+        z-index: -1;
+        opacity: 0.1;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .navbar-nav li {
+        margin: 8px 0;
+        transform: translateX(-20px);
+        opacity: 0;
+        animation: slideInNav 0.5s ease forwards;
+    }
+    
+    .navbar-nav li:nth-child(1) { animation-delay: 0.1s; }
+    .navbar-nav li:nth-child(2) { animation-delay: 0.2s; }
+    .navbar-nav li:nth-child(3) { animation-delay: 0.3s; }
+    .navbar-nav li:nth-child(4) { animation-delay: 0.4s; }
+    .navbar-nav li:nth-child(5) { animation-delay: 0.5s; }
+    .navbar-nav li:nth-child(6) { animation-delay: 0.6s; }
+    
+    .navbar-nav li a {
+        border-radius: 15px;
+        margin: 5px 15px;
+        display: block;
+        background: rgba(255,255,255,0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        font-size: 15px;
+        font-weight: 600;
+        padding: 15px 25px !important;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .navbar-nav li a::after {
+        content: '→';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: #667eea;
+        font-weight: bold;
+    }
+    
+    .navbar-nav li a:hover::after {
+        opacity: 1;
+        right: 15px;
+    }
+}
+
+@keyframes slideInNav {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* تحسين النصوص العربية */
+[dir="rtl"], .rtl {
+    text-align: right;
+    direction: rtl;
+}
+
+.arabic-text {
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+/* تحسين الرسوم المتحركة */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* تحسين التمرير السلس */
+html {
+    scroll-behavior: smooth;
+}
+
+/* تحسين شريط التحميل */
+.loading-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    z-index: 9999;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* تحسين الظلال والتأثيرات */
+.shadow-soft {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.shadow-medium {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.shadow-strong {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* تحسين النوافذ المنبثقة */
+.modal-content {
+    border-radius: 20px;
+    border: none;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    border: none;
+}
+
+/* تحسين التنقل بين الأقسام */
+.section-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: none;
+}
+
+.section-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.section-nav li {
+    margin: 10px 0;
+}
+
+.section-nav a {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+}
+
+.section-nav a.active,
+.section-nav a:hover {
+    background: #667eea;
+    transform: scale(1.3);
+}
+
+@media (min-width: 992px) {
+    .section-nav {
+        display: block;
+    }
+}
+
+/* تحسين التفاعل اللمسي */
+.touch-element {
+    -webkit-tap-highlight-color: rgba(102, 126, 234, 0.3);
+}
+
+/* تحسين الأداء */
+* {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+img {
+    will-change: transform;
+}

@@ -1,0 +1,428 @@
+/* ميزات إبداعية لتحسين تجربة المستخدم */
+
+/* 1. مؤثر الماوس المتتبع (Cursor Trail) */
+.cursor-trail {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.4));
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+    opacity: 0;
+}
+
+.cursor-trail.active {
+    opacity: 1;
+    animation: cursorPulse 1s infinite;
+}
+
+@keyframes cursorPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* 2. شريط تقدم القراءة المحسن */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    z-index: 10000;
+    backdrop-filter: blur(10px);
+}
+
+.reading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+    background-size: 200% 100%;
+    animation: progressGradient 3s linear infinite;
+    transition: width 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.reading-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes progressGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+/* 3. مؤشر التنقل الذكي */
+.smart-navigation {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 15px 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    opacity: 0;
+    transform: translateY(-50%) translateX(100px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.smart-navigation.visible {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+}
+
+.smart-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.smart-navigation li {
+    margin: 10px 0;
+    position: relative;
+}
+
+.smart-navigation a {
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(102, 126, 234, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    text-decoration: none;
+}
+
+.smart-navigation a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    padding: 8px 15px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 12px;
+    border-radius: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+}
+
+.smart-navigation a[href="#intro"]::before { content: 'الرئيسية'; }
+.smart-navigation a[href="#about"]::before { content: 'نبذة عن الشركة'; }
+.smart-navigation a[href="#services"]::before { content: 'الزيارات'; }
+.smart-navigation a[href="#portfolio"]::before { content: 'المتجر'; }
+.smart-navigation a[href="#team"]::before { content: 'التواصل'; }
+.smart-navigation a[href="#contact"]::before { content: 'الشركات المتعاونة'; }
+
+.smart-navigation a:hover::before {
+    opacity: 1;
+    right: 20px;
+}
+
+.smart-navigation a.active,
+.smart-navigation a:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    transform: scale(1.5);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* 4. مؤثر التمرير المتقدم (Parallax Cards) */
+.parallax-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(248,250,255,0.9));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.parallax-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.parallax-card:hover::before {
+    opacity: 0.1;
+}
+
+.parallax-card:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.2);
+}
+
+/* 5. تأثير الكتابة المتحركة */
+.typewriter-text {
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    color: #2c3e50;
+    border-right: 3px solid #667eea;
+    padding-right: 5px;
+    animation: typing 3s steps(30) infinite, blink 1s infinite;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    0%, 90%, 100% { width: 0; }
+    30%, 60% { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 50% { border-color: #667eea; }
+    51%, 100% { border-color: transparent; }
+}
+
+/* 6. مؤثر الضوء المتحرك على الأزرار */
+.btn-glow {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s;
+}
+
+.btn-glow:hover::before {
+    left: 100%;
+}
+
+.btn-glow:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+/* 7. مؤثر الجسيمات في الخلفية */
+.particles-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    animation: float 20s infinite linear;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 6s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 8s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 10s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 12s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 14s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 8. مؤثر الموج في الخلفية */
+.wave-bg {
+    position: relative;
+    overflow: hidden;
+}
+
+.wave-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(102, 126, 234, 0.05) 0%, 
+        rgba(118, 75, 162, 0.05) 25%,
+        rgba(240, 147, 251, 0.05) 50%,
+        rgba(102, 126, 234, 0.05) 75%,
+        rgba(118, 75, 162, 0.05) 100%);
+    animation: waveMove 15s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes waveMove {
+    0%, 100% { transform: translateX(-25%); }
+    50% { transform: translateX(-75%); }
+}
+
+/* 9. مؤثر الهولوجرام على البطاقات */
+.hologram-card {
+    background: linear-gradient(135deg, 
+        rgba(255,255,255,0.1) 0%,
+        rgba(255,255,255,0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hologram-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, 
+        transparent, 
+        rgba(102, 126, 234, 0.1),
+        transparent,
+        rgba(118, 75, 162, 0.1),
+        transparent);
+    animation: rotate 10s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hologram-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 10. مؤثر النبضات على الأيقونات */
+.pulse-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.pulse-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(102, 126, 234, 0.6);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* تحسينات للهواتف المحمولة */
+@media (max-width: 768px) {
+    .smart-navigation {
+        right: 15px;
+        transform: translateY(-50%) scale(0.8);
+    }
+    
+    .smart-navigation.visible {
+        transform: translateY(-50%) scale(0.8) translateX(0);
+    }
+    
+    .cursor-trail {
+        display: none;
+    }
+    
+    .parallax-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .particles-bg {
+        opacity: 0.05;
+    }
+}
+
+@media (max-width: 480px) {
+    .smart-navigation {
+        display: none;
+    }
+    
+    .hologram-card {
+        padding: 20px;
+    }
+    
+    .btn-glow {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
