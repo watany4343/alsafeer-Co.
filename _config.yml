@@ -1,0 +1,47 @@
+# تهيئة GitHub Pages لموقع كروب السفير
+
+# تمكين معالجة ملفات CSS و JS
+include:
+  - "_*"
+  - ".htaccess"
+
+# إعدادات الترميز
+encoding: utf-8
+
+# إعدادات الضغط
+compress_html:
+  clippings: all
+  comments: ["<!-- ", " -->"]
+  endings: all
+  startings: [html, head, body]
+
+# تحسين الأداء
+plugins:
+  - jekyll-sitemap
+  - jekyll-compress-images
+
+# إعدادات SEO
+title: "كروب السفير - المضخات والمحركات"
+description: "شركة متخصصة في تجارة المضخات والمحركات في العراق"
+lang: ar
+dir: rtl
+
+# إعدادات الموقع
+url: "https://yourusername.github.io"
+baseurl: "/alsafer-website"
+
+# إعدادات المحتوى
+markdown: kramdown
+highlighter: rouge
+
+# إعدادات الأمان
+safe: true
+incremental: false
+
+# استبعاد الملفات غير الضرورية
+exclude:
+  - README.md
+  - README-MOBILE.md
+  - .gitignore
+  - vendor/
+  - node_modules/
